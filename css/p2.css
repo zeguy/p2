@@ -4,13 +4,11 @@ body {
   font-family: sans-serif;
 }
 
-.container {
-	width: 100%;
-	margin: auto;
-}
+
 
 fieldset {
   border: 3px solid white;
+  width: 20%;
 }
 
 legend {

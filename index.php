@@ -1,5 +1,6 @@
 <?php
 require('helpers.php');
+
 if($_GET){
   $_GET = sanitize($_GET);
   function breakeven(){
@@ -34,13 +35,14 @@ if($_GET){
     <link rel="stylesheet" href="css/p2.css">
   </head>
   <body>
-    <div class="container">
-      <form autocomplete="off" method='GET' name="p2Form"><br>
+    <div>
+      <form autocomplete="off" method='GET' name="p2Form">
         <fieldset name="Breakeven">
           <legend><b>Breakeven</b></legend>
           <label for="cost">Cost: </label>
-          <input placeholder="required" name="cost" id="cost" type="number"
-          required="required" pattern=".{1,}" min="0" step="0.01"><br><br>
+          <input type="number" placeholder="required" name="cost" id="cost"
+          required="required" pattern=".{1,}" min="0" step="0.01"
+          value="<?sanitize($keyword)?>"><br><br>
           <label for="shipping">Free Shipping:</label>
           <input type="checkbox" name="shipping" id="shipping"><br><br>
           <label for="fees">Fees:</label>
@@ -48,7 +50,7 @@ if($_GET){
             <option value="eBay">eBay</option>
             <option value="paypal">Paypal</option>
             <option value="shopify">Shopify</option>
-          </select>
+          </select><br><br>
           <button type="submit" name="submit" value="Submit">Submit</button>
         </fieldset>
       </form>
