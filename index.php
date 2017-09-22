@@ -54,10 +54,10 @@ if($_GET){
           <button type="submit" name="submit" value="Submit">Submit</button>
         </fieldset>
       </form>
-    </div><br><br>
+    </div><br>
     <div>
     <?php if(isset($_GET['submit'])) : ?>
-      Your breakeven for this item is approximately:
+      Breakeven is approximately:
       <span id="amount">$<?=breakeven()?></span>
     <?php endif; ?>
   </div>
