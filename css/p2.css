@@ -1,0 +1,41 @@
+*{
+  display: inline-block;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+}
+
+fieldset {
+  border: 3px solid white;
+}
+
+legend {
+  color: red;
+}
+
+input[required="required"]:valid{
+    background-color: #ddffdd;
+}
+
+::placeholder {
+  text-align: center;
+  color: red;
+}
+
+button {
+  float:right;
+  background-color: red;
+  border-radius: 8px;
+}
+
+#amount{
+  color: red;
+}
