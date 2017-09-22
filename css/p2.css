@@ -1,11 +1,7 @@
-*{
-  display: inline-block;
-  font-family: sans-serif;
-}
-
 body {
   background-color: black;
   color: white;
+  font-family: sans-serif;
 }
 
 .container {

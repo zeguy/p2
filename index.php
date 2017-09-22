@@ -1,10 +1,10 @@
 <?php
 require('helpers.php');
-if($_POST){
-  $_POST = sanitize($_POST);
+if($_GET){
+  $_GET = sanitize($_GET);
   function breakeven(){
-    $cost = $_POST["cost"];
-    $fees = $_POST["fees"];
+    $cost = $_GET["cost"];
+    $fees = $_GET["fees"];
     $paypal = $cost*0.029 + 0.3;
     $eBay = $cost*1.1 + $paypal;
     $shopify = $cost*1.02 + $paypal;
@@ -17,7 +17,7 @@ if($_POST){
       $breakeven = $shopify;
     }
 
-    if (isset($_POST["shipping"])){
+    if (isset($_GET["shipping"])){
       $breakeven+=25;
     }
 
@@ -35,16 +35,16 @@ if($_POST){
   </head>
   <body>
     <div class="container">
-      <form autocomplete="off" method='post' action="index.php" name="p2Form"><br>
+      <form autocomplete="off" method='GET' name="p2Form"><br>
         <fieldset name="Breakeven">
           <legend><b>Breakeven</b></legend>
-          <label>Cost:</label>
-          <input placeholder="required" name="cost" id="cost"
-           type="number" required="required" pattern=".{1,}" min="0" step="0.01"><br><br>
-          <label>Free Shipping:</label>
+          <label for="cost">Cost: </label>
+          <input placeholder="required" name="cost" id="cost" type="number"
+          required="required" pattern=".{1,}" min="0" step="0.01"><br><br>
+          <label for="shipping">Free Shipping:</label>
           <input type="checkbox" name="shipping" id="shipping"><br><br>
-          <label>Fees:</label>
-          <select name="fees">
+          <label for="fees">Fees:</label>
+          <select name="fees" id="fees">
             <option value="eBay">eBay</option>
             <option value="paypal">Paypal</option>
             <option value="shopify">Shopify</option>
@@ -54,9 +54,9 @@ if($_POST){
       </form>
     </div><br><br>
     <div>
-    <?php if(isset($_POST['submit'])) : ?>
+    <?php if(isset($_GET['submit'])) : ?>
       Your breakeven for this item is approximately:
-      <span id=amount>$<?=breakeven()?></span>
+      <span id="amount">$<?=breakeven()?></span>
     <?php endif; ?>
   </div>
   </body>
