@@ -6,7 +6,6 @@ body {
 
 fieldset {
   border: 3px solid white;
-  width: 10%;
 }
 
 legend {
@@ -28,6 +27,6 @@ button {
   border-radius: 8px;
 }
 
-#amount{
+th {
   color: red;
 }

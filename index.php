@@ -1,30 +1,5 @@
 <?php
-require('helpers.php');
-
-if($_GET){
-  $_GET = sanitize($_GET);
-  function breakeven(){
-    $cost = $_GET["cost"];
-    $fees = $_GET["fees"];
-    $paypal = $cost*0.029 + 0.3;
-    $eBay = $cost*1.1 + $paypal;
-    $shopify = $cost*1.02 + $paypal;
-
-    if ($fees=="eBay"){
-      $breakeven = $eBay;
-    } elseif ($fees=="paypal") {
-      $breakeven = $cost + $paypal;
-    } elseif ($fees=="shopify") {
-      $breakeven = $shopify;
-    }
-
-    if (isset($_GET["shipping"])){
-      $breakeven+=25;
-    }
-
-    return ceil($breakeven);
-  }
-}
+require('logic.php');
 ?>
 
 <!DOCTYPE html>
@@ -36,29 +11,68 @@ if($_GET){
   </head>
   <body>
     <div>
-      <form autocomplete="off" method='GET' name="p2Form">
+      <form method='GET' name="p2Form">
         <fieldset name="Breakeven">
+
           <legend><b>Breakeven</b></legend>
-          <label for="cost">Cost: </label>
-          <input type="number" placeholder="required" name="cost" id="cost"
-          required="required" pattern=".{1,}" min="0" step="0.01"
-          value="<?sanitize($keyword)?>"><br><br>
-          <label for="shipping">Free Shipping:</label>
-          <input type="checkbox" name="shipping" id="shipping"><br><br>
-          <label for="fees">Fees:</label>
-          <select name="fees" id="fees">
-            <option value="eBay">eBay</option>
-            <option value="paypal">Paypal</option>
-            <option value="shopify">Shopify</option>
-          </select><br><br>
+
+          <label for="artist">Artist:</label>
+          <input type="text" name="artist" id="artist" required="required"
+          placeholder="required">
+
+          <label for="printName">Print:</label>
+          <input type="text" name="printName" id="printName" required="required"
+          placeholder="required">
+
+          <label for="variant">Variant:</label>
+          <input type="checkbox" name="variant" id="variant">
+
+          <label for="cost">Cost:</label>
+          <input type="number" name="cost" id="cost" required="required"
+          placeholder="required" pattern=".{1,}" min="0" step="0.01"
+          value="<?sanitize($keyword)?>">
+
+          <label for="condition">Condition:</label>
+          <select name="condition" id="condition">
+            <option value="very good">Very Good</option>
+            <option value="good">Good</option>
+            <option value="fair">Fair</option>
+            <option value="poor">Poor</option>
+          </select>
+
+          <label for="notes">Notes:</label>
+          <input type="text" name="notes" id="notes">
+
           <button type="submit" name="submit" value="Submit">Submit</button>
         </fieldset>
       </form>
-    </div><br>
+    </div>
+
     <div>
     <?php if(isset($_GET['submit'])) : ?>
-      Breakeven is approximately:
-      <span id="amount">$<?=breakeven()?></span>
+      <table>
+        <tr>
+          <th>Artist</th>
+          <th>Print</th>
+          <th>Variant</th>
+          <th>Cost</th>
+          <th>Condtion</th>
+          <th>Notes</th>
+          <th>Paypal</th>
+          <th>Ebay</th>
+          <th>Shopify</th>
+        </tr>
+        <tr>
+          <td><?=$print->artist?></td>
+          <td><?=$print->printName?></td>
+          <td><?=$print->variant?></td>
+          <td><?=$print->cost?></td>
+          <td><?=$print->condition?></td>
+          <td><?=$print->notes?></td>
+          <td><?=$print->paypal()?></td>
+          <td><?=$print->ebay()?></td>
+          <td><?=$print->shopify()?></td>
+      </table>
     <?php endif; ?>
   </div>
   </body>
