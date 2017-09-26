@@ -1,6 +1,7 @@
 <?php
 require('logic.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +11,7 @@ require('logic.php');
   </head>
   <body>
     <div>
-      <form method='POST' name="p2Form">
+      <form method='POST' name="p2Form" action="results.php">
         <fieldset name="Breakeven">
 
           <legend><b>Breakeven</b></legend>
@@ -46,33 +47,5 @@ require('logic.php');
         </fieldset>
       </form>
     </div>
-    <div>
-      <table>
-        <tr>
-          <th>Artist</th>
-          <th>Print</th>
-          <th>Variant</th>
-          <th>Cost</th>
-          <th>Condtion</th>
-          <th>Notes</th>
-          <th>Paypal</th>
-          <th>Shopify</th>
-          <th>Ebay</th>
-        </tr>
-          <?php foreach ($parsed as $print) : ?>
-          <tr>
-            <td><?=$print->artist?></td>
-            <td><?=$print->printName?></td>
-            <td><?=$print->variant?></td>
-            <td><?=$print->cost?></td>
-            <td><?=$print->condition?></td>
-            <td><?=$print->notes?></td>
-            <td><?=$print->cost*1.02+0.3+25?></td>
-            <td><?=($print->cost*1.02+0.3)+($print->cost*.02)+25?></td>
-            <td><?=($print->cost*1.02+0.3)+($print->cost*0.1)+25?></td>
-          </tr>
-          <?php endforeach; ?>
-      </table>
-  </div>
   </body>
 </html>
