@@ -14,7 +14,7 @@ class prints {
     $this->condition = $condition;
     $this->notes = $notes;
 
-    if (isset($_GET["variant"])){
+    if (isset($_POST["variant"])){
       $this->variant = "yes";
     } else {
       $this->variant = "no";

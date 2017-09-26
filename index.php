@@ -11,7 +11,7 @@ require('logic.php');
   </head>
   <body>
     <div>
-      <form method='GET' name="p2Form">
+      <form method='POST' name="p2Form">
         <fieldset name="Breakeven">
 
           <legend><b>Breakeven</b></legend>
@@ -49,7 +49,6 @@ require('logic.php');
     </div>
 
     <div>
-    <?php if(isset($_GET['submit'])) : ?>
       <table>
         <tr>
           <th>Artist</th>
@@ -62,7 +61,18 @@ require('logic.php');
           <th>Ebay</th>
           <th>Shopify</th>
         </tr>
-        <tr>
+          <?php foreach ($parsed as $print) : ?>
+          <tr>
+            <td><?=$print->artist?></td>
+            <td><?=$print->printName?></td>
+            <td><?=$print->variant?></td>
+            <td><?=$print->cost?></td>
+            <td><?=$print->condition?></td>
+            <td><?=$print->notes?></td>
+          </tr>            
+          <?php endforeach; ?>
+
+    <!-- <?php if(isset($_POST['submit'])) : ?>
           <td><?=$print->artist?></td>
           <td><?=$print->printName?></td>
           <td><?=$print->variant?></td>
@@ -71,9 +81,9 @@ require('logic.php');
           <td><?=$print->notes?></td>
           <td><?=$print->paypal()?></td>
           <td><?=$print->ebay()?></td>
-          <td><?=$print->shopify()?></td>
+          <td><?=$print->shopify()?></td> -->
       </table>
-    <?php endif; ?>
+    <!-- <?php endif; ?> -->
   </div>
   </body>
 </html>
