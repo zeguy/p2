@@ -1,7 +1,6 @@
 <?php
 require('logic.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,7 +46,6 @@ require('logic.php');
         </fieldset>
       </form>
     </div>
-
     <div>
       <table>
         <tr>
@@ -58,8 +56,8 @@ require('logic.php');
           <th>Condtion</th>
           <th>Notes</th>
           <th>Paypal</th>
-          <th>Ebay</th>
           <th>Shopify</th>
+          <th>Ebay</th>
         </tr>
           <?php foreach ($parsed as $print) : ?>
           <tr>
@@ -69,21 +67,12 @@ require('logic.php');
             <td><?=$print->cost?></td>
             <td><?=$print->condition?></td>
             <td><?=$print->notes?></td>
-          </tr>            
+            <td><?=$print->cost*1.02+0.3+25?></td>
+            <td><?=($print->cost*1.02+0.3)+($print->cost*.02)+25?></td>
+            <td><?=($print->cost*1.02+0.3)+($print->cost*0.1)+25?></td>
+          </tr>
           <?php endforeach; ?>
-
-    <!-- <?php if(isset($_POST['submit'])) : ?>
-          <td><?=$print->artist?></td>
-          <td><?=$print->printName?></td>
-          <td><?=$print->variant?></td>
-          <td><?=$print->cost?></td>
-          <td><?=$print->condition?></td>
-          <td><?=$print->notes?></td>
-          <td><?=$print->paypal()?></td>
-          <td><?=$print->ebay()?></td>
-          <td><?=$print->shopify()?></td> -->
       </table>
-    <!-- <?php endif; ?> -->
   </div>
   </body>
 </html>

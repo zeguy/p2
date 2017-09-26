@@ -5,7 +5,7 @@ body {
 }
 
 fieldset {
-  border: 3px solid white;
+  border: 1px solid white;
 }
 
 legend {
@@ -27,6 +27,15 @@ button {
   border-radius: 8px;
 }
 
+table {
+  border: 1px solid white;
+}
+
 th {
   color: red;
+}
+
+td {
+  text-align: center;
+  border: 1px solid white;
 }
