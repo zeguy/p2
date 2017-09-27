@@ -7,7 +7,7 @@ namespace DWA;
 #
 # In action:
 # http://php-practice.dwa15.com/formDemo.php
-class Form
+class form
 {
     /**
     * Properties

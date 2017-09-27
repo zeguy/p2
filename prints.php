@@ -2,7 +2,7 @@
 
 namespace P2;
 
-class Prints {
+class prints {
 
 	function __construct($artist, $printName, $cost, $condition) {
     $this->artist = $artist;
