@@ -1,10 +1,10 @@
 <?php
-require('Form.php');
-require('Prints.php');
+require('form.php');
+require('prints.php');
 require('helpers.php');
 
-use DWA\form;
-use P2\prints;
+use DWA\Form;
+use P2\Prints;
 
 $filePath = 'data.json';
 $import = file_get_contents($filePath);
