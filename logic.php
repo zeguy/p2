@@ -10,6 +10,8 @@ $filePath = 'data.json';
 $import = file_get_contents($filePath);
 $parsed = json_decode($import);
 
+if($_POST)
+$_POST = sanitize($_POST);
 $form = new Form($_POST);
 $artist = $form->get('artist',"");
 $printName = $form->get('printName',"");
