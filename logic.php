@@ -22,7 +22,7 @@ if ($form->isSubmitted()){
   $errors = $form->validate([
           'artist' => 'required',
           'printName' => 'required',
-          'cost' => 'required',
+          'cost' => 'required|numeric',
       ]
     );
 
